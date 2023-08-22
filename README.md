@@ -134,7 +134,7 @@ if __name__ == '__main__':
    python app.py
    ```
 
-**Paso 612 Prueba de la API**
+**Paso 12 Prueba de la API**
 1. Utiliza herramientas como `curl`, Postman o alguna librería de Python para hacer solicitudes HTTP.
 2. Para registrar un usuario, realiza una solicitud POST a `http://localhost:5000/signup` con un cuerpo JSON que contenga el nombre de usuario y la contraseña.
 3. Para iniciar sesión, realiza una solicitud POST a `http://localhost:5000/login` con un cuerpo JSON que contenga el nombre de usuario y la contraseña.
