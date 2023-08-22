@@ -140,3 +140,6 @@ if __name__ == '__main__':
 3. Para iniciar sesión, realiza una solicitud POST a `http://localhost:5000/login` con un cuerpo JSON que contenga el nombre de usuario y la contraseña.
 
 ¡Felicidades! Has creado un laboratorio completo que combina los conceptos aprendidos para construir una API en Flask. Ahora tienes una API que permite el registro y el inicio de sesión de usuarios, así como una ruta de saludo con parámetros. A partir de aquí, puedes explorar más características y funcionalidades de Flask para seguir desarrollando tu API.
+
+**Ahora te toca a ti**
+Implementa una ruta para agregar, editar y eliminar un usuario en el archivo users.json. Puedes utilizar el método POST para agregar un usuario, PUT para editar un usuario y el método DELETE para eliminar un usuario.
