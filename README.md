@@ -75,4 +75,68 @@ def saludar(nombre):
 from flask import Flask, request
 ```
 
-¡Felicidades! Has creado tu primer laboratorio para construir una API con Flask. Este lab te proporciona una introducción básica a Flask y cómo crear rutas, manejar solicitudes HTTP y enviar respuestas JSON. A partir de aquí, puedes explorar más funciones y características de Flask para desarrollar APIs más complejas y robustas.
+ Ahora aprenderás a crear una API en Flask que permita el registro (sign in) y el inicio de sesión (login) de usuarios utilizando un archivo JSON para almacenar la información de las cuentas. Aprenderás cómo manejar las rutas, los métodos HTTP y la gestión de sesiones básicas.
+
+**Paso 8: Creación del archivo users**
+1. Crea un archivo llamado `users.json` para almacenar la información de los usuarios en formato JSON.
+
+**Paso 9: Contenido del archivo users.json**
+```json
+{
+  "usuarios": [
+    {
+      "usuario": "usuario1",
+      "contraseña": "clave123"
+    },
+    {
+      "usuario": "usuario2",
+      "contraseña": "abcd456"
+    }
+  ]
+}
+```
+
+**Paso 10: Implementación de la API**
+```python
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+# Ruta para el registro de usuarios
+@app.route('/signup', methods=['POST'])
+def sign_up():
+    new_user = request.get_json()
+    with open('users.json', 'r') as users_file:
+        users_data = json.load(users_file)
+    users_data['usuarios'].append(new_user)
+    with open('users.json', 'w') as users_file:
+        json.dump(users_data, users_file, indent=4)
+    return jsonify({"message": "Usuario registrado exitosamente"})
+
+# Ruta para el inicio de sesión
+@app.route('/login', methods=['POST'])
+def login():
+    user_data = request.get_json()
+    with open('users.json', 'r') as users_file:
+        users_data = json.load(users_file)
+    for user in users_data['usuarios']:
+        if user['usuario'] == user_data['usuario'] and user['contraseña'] == user_data['contraseña']:
+            return jsonify({"message": "Inicio de sesión exitoso"})
+    return jsonify({"message": "Credenciales inválidas"})
+
+if __name__ == '__main__':
+    app.run()
+```
+
+**Paso 11: Ejecución de la aplicación**
+1. Desde la línea de comandos, dentro de la carpeta de tu proyecto, ejecuta el siguiente comando:
+   ```
+   python app.py
+   ```
+
+**Paso 612 Prueba de la API**
+1. Utiliza herramientas como `curl`, Postman o alguna librería de Python para hacer solicitudes HTTP.
+2. Para registrar un usuario, realiza una solicitud POST a `http://localhost:5000/signup` con un cuerpo JSON que contenga el nombre de usuario y la contraseña.
+3. Para iniciar sesión, realiza una solicitud POST a `http://localhost:5000/login` con un cuerpo JSON que contenga el nombre de usuario y la contraseña.
+
+¡Felicidades! Has creado un laboratorio completo que combina los conceptos aprendidos para construir una API en Flask. Ahora tienes una API que permite el registro y el inicio de sesión de usuarios, así como una ruta de saludo con parámetros. A partir de aquí, puedes explorar más características y funcionalidades de Flask para seguir desarrollando tu API.
