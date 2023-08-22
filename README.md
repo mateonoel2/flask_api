@@ -142,4 +142,5 @@ if __name__ == '__main__':
 ¡Felicidades! Has creado un laboratorio completo que combina los conceptos aprendidos para construir una API en Flask. Ahora tienes una API que permite el registro y el inicio de sesión de usuarios, así como una ruta de saludo con parámetros. A partir de aquí, puedes explorar más características y funcionalidades de Flask para seguir desarrollando tu API.
 
 **Ahora te toca a ti**
+
 Implementa una ruta para editar y eliminar un usuario en el archivo users.json. Puedes utilizar el método PUT para editar un usuario y el método DELETE para eliminar un usuario.
